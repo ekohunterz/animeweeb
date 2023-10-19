@@ -54,7 +54,7 @@ const toggleMenu = () => {
     </div>
 
     <!-- Mobile menu (hidden by default) -->
-    <div v-if="isMenuOpen" class="fixed top-0 right-0 left-0 z-[9] md:hidden pt-24 bg-primary_dark container pb-3">
+    <div v-if="isMenuOpen" class="fixed top-15 right-0 left-0 md:hidden pt-14 bg-primary_dark container pb-3">
       <NuxtLink to="/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> Home </NuxtLink>
       <NuxtLink to="/news/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> News </NuxtLink>
       <NuxtLink to="/categories/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all"> Categories </NuxtLink>

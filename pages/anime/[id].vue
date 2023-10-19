@@ -30,13 +30,13 @@ const { data: recommend }: any = await useFetch(`${config.public.apiBase}/recomm
         <Head>
           <Title>{{ anime.data.title }} | Anime Weebs App</Title>
         </Head>
-        <div class="flex justify-between gap-8">
-          <div class="w-3/4">
+        <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+          <div class="w-full lg:w-3/4">
             <p class="text-3xl text-secondary mb-6">{{ anime.data.title }}</p>
             <iframe v-if="anime.data.trailer.embed_url" width="100%" height="500" class="rounded-lg shadow-sm" :src="anime.data.trailer.embed_url"></iframe>
-            <div class="flex w-full gap-6 mt-8 text-secondary">
-              <div><img class="rounded-lg" width="200" :src="anime.data.images['webp'].large_image_url" /></div>
-              <div>
+            <div class="flex flex-col lg:flex-row w-full gap-6 mt-8 text-secondary">
+              <div class="w-full lg:w-auto"><img class="rounded-lg mx-auto lg:mx-0" width="200" :src="anime.data.images['webp'].large_image_url" /></div>
+              <div class="w-full lg:w-auto">
                 <p class="leading-relaxed flex gap-3 items-center text-xl"><IconStarFilled color="yellow" />{{ anime.data.score }}</p>
                 <label class="font-semibold text-lg">Type :</label>
                 <p class="text-gray-400">{{ anime.data.type }}</p>
@@ -59,7 +59,7 @@ const { data: recommend }: any = await useFetch(`${config.public.apiBase}/recomm
               <p class="leading-relaxed">{{ anime.data.synopsis }}</p>
             </div>
           </div>
-          <div class="w-1/4">
+          <div class="w-full lg:w-1/4">
             <h1 class="text-secondary text-2xl mb-6">Recommendations</h1>
             <div v-if="recommend.data">
               <div class="text-secondary grid grid-cols-2 gap-3" v-for="anime in recommend.data.slice(0, 4)">

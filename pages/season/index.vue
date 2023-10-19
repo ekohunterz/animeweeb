@@ -31,7 +31,7 @@ const { pending, data: ongoing }: any = await useFetch(url, {
         <div class="flex justify-between">
           <h1 class="text-secondary font-semibold text-2xl mb-5 capitalize">{{ ongoing.data[0].season }} {{ ongoing.data[0].year }} Anime</h1>
         </div>
-        <div class="grid grid-cols-5 text-secondary gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-5 text-secondary gap-6">
           <NuxtLink v-for="anime in ongoing.data" :key="anime.mal_id" :to="`/anime/${anime.mal_id}`" class="rounded-lg bg-white relative group overflow-hidden">
             <div v-if="anime.score" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm text-white p-1 flex items-center gap-2"><IconStarFilled size="12" />{{ anime.score }}</div>
             <img class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />
