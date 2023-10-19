@@ -15,7 +15,7 @@ const { data: upcoming }: any = await useAsyncData("upcoming", () => $fetch(`${c
 </script>
 
 <template>
-  <div class="py-16 bg-primary_dark">
+  <div class="py-32 bg-primary_dark">
     <div class="container">
       <!-- Highlight -->
       <div class="flex justify-between">

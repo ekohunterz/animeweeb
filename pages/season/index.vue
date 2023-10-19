@@ -23,7 +23,7 @@ const { pending, data: ongoing }: any = await useFetch(url, {
 </script>
 
 <template>
-  <div class="py-16 bg-primary_dark min-h-screen">
+  <div class="py-32 bg-primary_dark min-h-screen">
     <div class="container">
       <!-- Highlight -->
       <div v-if="pending"><span class="text-white text-2xl">Loading ...</span></div>

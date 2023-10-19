@@ -10,6 +10,12 @@ const toggleDark = useToggle(isDark);
 const search = ref("");
 const searchDebounce = refDebounced(search, 700);
 
+const router = useRouter();
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
+
 const url = computed(() => {
   return `/api/anime/search?query=${searchDebounce.value}`;
 });
@@ -19,11 +25,15 @@ const { data: searchResult }: any = await useFetch(url);
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
+
+watch(router.currentRoute, () => {
+  closeMenu();
+});
 </script>
 
 <template>
   <div>
-    <div class="pt-4 pb-3 z-10 bg-primary_dark">
+    <div class="pt-4 absolute left-0 right-0 top-0 pb-3 z-[9999] bg-primary_dark">
       <div class="container flex justify-between items-center">
         <div class="flex gap-4 items-center">
           <NuxtLink to="/" class="text-white font-aubrey font-bold text-xl mr-4"> Anime Weebs </NuxtLink>
@@ -54,7 +64,7 @@ const toggleMenu = () => {
     </div>
 
     <!-- Mobile menu (hidden by default) -->
-    <div v-if="isMenuOpen" class="fixed top-15 right-0 z-[999] left-0 md:hidden pt-14 bg-primary_dark container pb-3">
+    <div v-if="isMenuOpen" class="fixed top-0 right-0 left-0 z-[9998] md:hidden pt-24 bg-primary_dark container pb-3">
       <NuxtLink to="/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> Home </NuxtLink>
       <NuxtLink to="/news/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> News </NuxtLink>
       <NuxtLink to="/categories/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all"> Categories </NuxtLink>
