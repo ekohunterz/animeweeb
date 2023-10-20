@@ -10,11 +10,13 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1; /* Warna latar belakang track scrollbar */
+  border-end-end-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Warna handle scrollbar */
+  background: #b9b9b9; /* Warna handle scrollbar */
   border-radius: 6px; /* Sudut border handle scrollbar */
 }
 

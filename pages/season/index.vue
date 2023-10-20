@@ -23,32 +23,32 @@ const { pending, data: ongoing }: any = await useFetch(url, {
 </script>
 
 <template>
-  <div class="py-32 bg-primary_dark min-h-screen">
+  <div class="py-32 bg-primary_white min-h-screen">
     <div class="container">
       <!-- Highlight -->
-      <div v-if="pending"><span class="text-white text-2xl">Loading ...</span></div>
+      <div v-if="pending"><span class="text-black text-2xl">Loading ...</span></div>
       <div v-else>
         <div class="flex justify-between">
-          <h1 class="text-secondary font-semibold text-2xl mb-5 capitalize">{{ ongoing.data[0].season }} {{ ongoing.data[0].year }} Anime</h1>
+          <h1 class="text-black font-semibold text-2xl mb-5 capitalize">{{ ongoing.data[0].season }} {{ ongoing.data[0].year }} Anime</h1>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-5 text-secondary gap-6">
           <NuxtLink v-for="anime in ongoing.data" :key="anime.mal_id" :to="`/anime/${anime.mal_id}`" class="rounded-lg bg-white relative group overflow-hidden">
-            <div v-if="anime.score" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm text-white p-1 flex items-center gap-2"><IconStarFilled size="12" />{{ anime.score }}</div>
+            <div v-if="anime.score" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm text-white p-1 flex items-center gap-2"><IconStarFilled :size="12" />{{ anime.score }}</div>
             <img class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />
             <div class="absolute bottom-0 left-0 right-0 text-center bg-black bg-opacity-80 text-white p-2 transition duration-300 opacity-0 group-hover:opacity-100">
               {{ anime.titles[0].title }}
             </div>
           </NuxtLink>
         </div>
-        <div v-if="ongoing.pagination" class="flex justify-center items-center text-secondary my-4 space-x-4">
-          <button @click="page--" :disabled="page === 1" class="bg-primary hover:bg-primary_light text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out">Previous</button>
+        <div v-if="ongoing.pagination" class="flex justify-center items-center text-black my-4 space-x-4">
+          <button @click="page--" :disabled="page === 1" class="bg-deep_blue  text-secondary  font-semibold py-2 px-4 rounded transition duration-300 ease-in-out">Previous</button>
           <div class="flex items-center">
             <span class="mr-2">Page &nbsp;{{ page }}&nbsp; from &nbsp;{{ ongoing.pagination.last_visible_page }}</span>
           </div>
           <button
             @click="page++"
             :disabled="page === ongoing.pagination.last_visible_page"
-            class="bg-primary hover:bg-primary_light text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+            class="bg-deep_blue  text-secondary font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
           >
             Next
           </button>

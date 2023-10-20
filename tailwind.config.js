@@ -19,9 +19,12 @@ export default {
     extend: {
       colors: {
         primary: "#BD00FF",
-        secondary: "#FCFCFC",
+        secondary: "#FAF9F6",
         alternative: "#070707",
+        primary_white: "F6F4EB",
         primary_dark: "#192026",
+        deep_blue: "#3CA1D5",
+        cerise_red: "#DD4854",
       },
       fontFamily: {
         aubrey: ["Aubrey", "sans-serif"],
