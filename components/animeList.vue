@@ -23,9 +23,9 @@ const props = defineProps({
       disableOnInteraction: true,
     }"
   >
-    <SwiperSlide v-for="(anime, index) in animeList" :key="index" class="h-96 overflow-hidden">
-      <NuxtLink :to="`/anime/${anime.mal_id}`" class="rounded-lg bg-white relative group overflow-hidden">
-        <div v-if="anime.score" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm rounded-tl-lg text-white p-1 flex items-center gap-2">
+    <SwiperSlide v-for="(anime, index) in animeList" :key="index" class="h-96 shadow-lg">
+      <NuxtLink :to="`/anime/${anime.mal_id}`" class="rounded-lg bg-white relative group">
+        <div v-if="anime.score" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm rounded-br-md rounded-tl-lg text-white p-1 flex items-center gap-2">
           <IconStarFilled :size="12" />{{ anime.score }}
         </div>
         <img class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />

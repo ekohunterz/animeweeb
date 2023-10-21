@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { IconStarFilled, IconExternalLink } from "@tabler/icons-vue";
+import { IconStarFilled, IconExternalLink, IconLoaderQuarter } from "@tabler/icons-vue";
 
 definePageMeta({
   pageTransition: {
@@ -39,15 +39,19 @@ function truncateText(text: string, maxLength: number) {
 }
 
 //fetch daa for get detail data post
-const { data: anime }: any = await useFetch(`/api/anime/${id.value}`);
-const { data: recommend }: any = await useFetch(`${config.public.apiBase}/recommendations/anime`);
-const { data: news }: any = await useFetch(`${config.public.apiBase}/anime/${id.value}/news`);
+const { pending, data: anime }: any = await useFetch(`/api/anime/${id.value}`, {
+  lazy: true,
+});
 </script>
 
 <template>
   <div class="py-32 bg-primary_white min-h-screen">
     <div class="container">
-      <div v-if="anime">
+      <div class="bg-gray-100 p-3 h-screen w-full flex items-center justify-center text-4xl font-bold" v-if="pending">
+        <IconLoaderQuarter class="animate-spin" :size="64" />
+        <p>Loading...</p>
+      </div>
+      <div v-else>
         <Head>
           <Title>{{ anime.data.title }} | Anime Weebs App</Title>
         </Head>
@@ -175,7 +179,10 @@ const { data: news }: any = await useFetch(`${config.public.apiBase}/anime/${id.
               <div class="lg:w-1/6 font-bold text-primary_dark mr-3">{{ related.relation }}</div>
               <div class="hidden lg:flex font-bold text-primary_dark">:</div>
               <div class="lg:w-3/4 flex flex-col">
-                <a :href="entry.url" class="font-light hover:text-deep_blue" v-for="entry in related.entry">{{ entry.name }} ({{ entry.type }}) </a>
+                <div v-for="entry in related.entry">
+                  <NuxtLink v-if="entry.type === 'anime'" :to="`/anime/${entry.mal_id}`" class="font-light hover:text-deep_blue">{{ entry.name }} ({{ entry.type }}) </NuxtLink>
+                  <NuxtLink v-if="entry.type === 'manga'" :to="`/manga/${entry.mal_id}`" class="font-light hover:text-deep_blue">{{ entry.name }} ({{ entry.type }}) </NuxtLink>
+                </div>
               </div>
             </div>
 
@@ -199,7 +206,7 @@ const { data: news }: any = await useFetch(`${config.public.apiBase}/anime/${id.
         </div>
       </div>
     </div>
-    <ModalView :isOpen="isModalOpen" @close="closeModal" :data="anime.data" :type="typeModal" />
+    <ModalView :isOpen="isModalOpen" @close="closeModal" :data="anime?.data" :type="typeModal" />
   </div>
 </template>
 <style scoped>

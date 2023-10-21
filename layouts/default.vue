@@ -42,11 +42,11 @@ watch(router.currentRoute, () => {
     <div class="pt-4 absolute left-0 right-0 top-0 pb-3 z-[9999] bg-deep_blue">
       <div class="container flex justify-between items-center">
         <div class="flex gap-4 items-center">
-          <NuxtLink to="/" class="text-white font-aubrey font-bold text-xl mr-4"> Anime Weebs </NuxtLink>
+          <NuxtLink to="/" class="text-white font-aubrey font-bold text-2xl mr-4"> Anime Weebs </NuxtLink>
           <div class="md:flex space-x-4 hidden">
             <NuxtLink to="/" class="text-white font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> Home </NuxtLink>
-            <NuxtLink to="/news" class="text-white font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> News </NuxtLink>
-            <NuxtLink to="/categories" class="text-white font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all"> Categories </NuxtLink>
+            <NuxtLink to="/season" class="text-white font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> Seasons </NuxtLink>
+            <NuxtLink to="/top" class="text-white font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all"> Top Anime </NuxtLink>
           </div>
         </div>
 
@@ -75,8 +75,10 @@ watch(router.currentRoute, () => {
     <!-- Mobile menu (hidden by default) -->
     <div v-if="isMenuOpen" class="absolute top-0 right-0 left-0 z-[9998] md:hidden pt-24 bg-deep_blue container pb-3">
       <NuxtLink to="/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> Home </NuxtLink>
-      <NuxtLink to="/news/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300"> News </NuxtLink>
-      <NuxtLink to="/categories/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all"> Categories </NuxtLink>
+      <NuxtLink to="/season/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all" exact-active-class="text-gray-300">
+        Seasons
+      </NuxtLink>
+      <NuxtLink to="/top/" class="text-secondary block py-2 font-semibold text-base hover:text-gray-300 ease-in-out duration-300 transition-all"> Top Anime </NuxtLink>
       <div class="relative">
         <input v-model="search" class="p-2 w-full rounded-md my-2 text-black" type="text" placeholder="Search..." />
         <button v-if="search" @click="clearSearch" class="absolute top-4 right-4 text-black">

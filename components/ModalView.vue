@@ -25,7 +25,10 @@ const props = defineProps({
               <h4 class="text-xl font-semibold dark:text-white">Watch</h4>
               <button @click="emit('close')"><IconX /></button>
             </div>
-            <iframe v-if="type == 'trailer'" class="w-full h-72" :src="data.trailer.embed_url"></iframe>
+            <div v-if="type == 'trailer'">
+              <iframe v-if="data.trailer.embed_url" class="w-full h-72" :src="data.trailer.embed_url"></iframe>
+              <p v-else>No video</p>
+            </div>
             <div v-if="type == 'streaming'">
               <p class="whitespace-pre-wrap text-sm !leading-8 text-black dark:text-secondary md:text-base">Streaming available at:</p>
               <div class="mt-4 flex flex-wrap text-secondary gap-3">
