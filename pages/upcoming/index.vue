@@ -17,9 +17,7 @@ const url = computed(() => {
 });
 
 //fetch data from API with "useAsyncData"
-const { pending, data: ongoing }: any = await useFetch(url, {
-  lazy: true,
-});
+const { pending, data: ongoing }: any = await useLazyFetch(url);
 </script>
 
 <template>
@@ -39,7 +37,7 @@ const { pending, data: ongoing }: any = await useFetch(url, {
               <div v-if="anime.year" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm rounded-br-md text-white p-1 flex items-center gap-2 capitalize">
                 {{ anime.season }} {{ anime.year }}
               </div>
-              <img class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />
+              <NuxtImg class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />
               <div class="absolute bottom-0 left-0 right-0 text-center bg-black bg-opacity-80 text-white p-2 transition duration-300 opacity-0 group-hover:opacity-100">
                 {{ anime.titles[0].title }}
               </div>

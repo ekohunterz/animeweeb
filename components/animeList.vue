@@ -28,7 +28,7 @@ const props = defineProps({
         <div v-if="anime.score" class="absolute top-0 left-0 text-center bg-yellow-600 text-sm rounded-br-md rounded-tl-lg text-white p-1 flex items-center gap-2">
           <IconStarFilled :size="12" />{{ anime.score }}
         </div>
-        <img class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />
+        <NuxtImg class="object-cover w-full h-80 rounded-lg" :src="anime.images['webp'].large_image_url" alt="Anime Image" />
         <div class="absolute bottom-0 left-0 right-0 text-center rounded-b-lg bg-black bg-opacity-80 text-white p-2 transition duration-300 opacity-0 group-hover:opacity-100">
           {{ anime.titles[0].title }}
         </div>

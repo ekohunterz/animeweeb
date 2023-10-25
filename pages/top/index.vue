@@ -55,7 +55,7 @@ const { pending, data: animes }: any = await useFetch(url, {
           >
             <div class="flex items-center h-52 lg:h-auto justify-center w-auto gap-8">
               <h1 class="hidden lg:flex text-xl font-bold">#{{ anime.rank }}</h1>
-              <img class="lg:h-24 lg:w-16 rounded-lg" :src="anime.images['webp'].image_url" />
+              <NuxtImg class="lg:h-24 lg:w-16 rounded-lg" :src="anime.images['webp'].image_url" />
             </div>
             <div class="w-auto hidden lg:flex lg:flex-col mt-2 lg:mt-0">
               <h1 class="text-lg font-bold">{{ anime.title }}</h1>

@@ -16,13 +16,13 @@ const props = defineProps({
     <Transition>
       <div v-if="props.isOpen" class="fixed inset-0 flex items-center backdrop-blur-sm justify-center z-50">
         <!-- Latar belakang gelap saat modal terbuka -->
-        <div @click="emit('close')" class="modal-overlay fixed inset-0 bg-gray-100 dark:bg-teal-950 opacity-80"></div>
+        <div @click="emit('close')" class="modal-overlay fixed inset-0 bg-gray-100 opacity-80"></div>
 
         <!-- Konten Modal -->
-        <div class="modal-container bg-white dark:bg-primary_dark lg:w-1/2 lg:h-auto custom-scrollbar overflow-auto max-h-[60%] w-2/3 mx-auto p-6 rounded shadow-lg z-50">
+        <div class="modal-container bg-white lg:w-1/2 lg:h-auto custom-scrollbar overflow-auto max-h-[60%] w-2/3 mx-auto p-6 rounded shadow-lg z-50">
           <div class="p-6">
             <div class="mb-6 flex items-center justify-between">
-              <h4 class="text-xl font-semibold dark:text-white">Watch</h4>
+              <h4 class="text-xl font-semibold">Watch</h4>
               <button @click="emit('close')"><IconX /></button>
             </div>
             <div v-if="type == 'trailer'">
@@ -30,7 +30,7 @@ const props = defineProps({
               <p v-else>No video</p>
             </div>
             <div v-if="type == 'streaming'">
-              <p class="whitespace-pre-wrap text-sm !leading-8 text-black dark:text-secondary md:text-base">Streaming available at:</p>
+              <p class="whitespace-pre-wrap text-sm !leading-8 text-black md:text-base">Streaming available at:</p>
               <div class="mt-4 flex flex-wrap text-secondary gap-3">
                 <a class="bg-deep_blue p-3 rounded-md hover:bg-opacity-75 ease-in-out duration-300" :href="stream.url" target="_blank" v-for="stream in data.streaming">{{ stream.name }}</a>
               </div>

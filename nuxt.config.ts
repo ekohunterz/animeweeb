@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@vueuse/nuxt", "nuxt-swiper", "dayjs-nuxt", "@vueuse/nuxt"],
+  modules: ["@vueuse/nuxt", "nuxt-swiper", "dayjs-nuxt", "@vueuse/nuxt", "@nuxt/image"],
   postcss: {
     plugins: {
       tailwindcss: {},
