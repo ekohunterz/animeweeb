@@ -25,7 +25,7 @@ const url = computed(() => {
 //fetch data from API with "useAsyncData"
 const { pending, data: ongoing }: any = await useLazyFetch(url);
 
-const { data: getSeason }: any = await useLazyAsyncData("getSeason", () => $fetch(`${config.public.apiBase}/seasons`));
+const { pending: pending1, data: getSeason }: any = await useLazyFetch(`${config.public.apiBase}/seasons`);
 </script>
 
 <template>

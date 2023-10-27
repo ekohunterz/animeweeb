@@ -22,13 +22,14 @@ const { pending, data: anime }: any = await useLazyFetch(`/api/anime/${id.value}
   <div>
     <div class="py-32 bg-primary_white min-h-screen">
       <div class="container">
-        <div class="bg-gray-100 p-3 h-screen w-full flex items-center justify-center text-4xl font-bold" v-if="pending">
+        <div class="bg-primary_white p-3 h-screen w-full flex items-center justify-center text-4xl font-bold" v-if="pending">
           <IconLoaderQuarter class="animate-spin" :size="64" />
           <p>Loading...</p>
         </div>
         <div v-else>
           <Head>
             <Title>{{ anime.data.title }} | Anime Weebs App</Title>
+            <Meta name="description" :content="anime.data.synopsis" />
           </Head>
           <div class="lg:flex w-full gap-8 lg:justify-between">
             <AnimeDetail :detail="anime.data" />

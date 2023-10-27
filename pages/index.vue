@@ -13,9 +13,9 @@ const isMobile = computed(() => {
 });
 
 //fetch data from API with "useAsyncData"
-const { pending, data: ongoing }: any = await useLazyAsyncData("ongoing", () => $fetch(`${config.public.apiBase}/seasons/now?filter=tv`));
+const { pending, data: ongoing, refresh }: any = await useLazyFetch(`${config.public.apiBase}/seasons/now?filter=tv`);
 
-const { pending1, data: upcoming }: any = await useLazyAsyncData("upcoming", () => $fetch(`${config.public.apiBase}/seasons/upcoming`));
+const { pending: pending1, data: upcoming, refresh: refresh1 }: any = await useLazyFetch(`${config.public.apiBase}/seasons/upcoming`);
 </script>
 
 <template>
@@ -32,7 +32,7 @@ const { pending1, data: upcoming }: any = await useLazyAsyncData("upcoming", () 
           <AnimeCardPlaceholder v-for="index in isMobile ? 2 : 6" :key="index" />
         </div>
         <div v-else>
-          <animeList :animeList="ongoing?.data" />
+          <animeList :animeList="ongoing?.data" @refresh-data="refresh" />
         </div>
         <div class="flex justify-between mt-20">
           <h1 class="text-deep_blue font-semibold text-xl mb-3">Upcoming Anime</h1>
@@ -42,7 +42,7 @@ const { pending1, data: upcoming }: any = await useLazyAsyncData("upcoming", () 
           <AnimeCardPlaceholder v-for="index in isMobile ? 2 : 6" :key="index" />
         </div>
         <div v-else>
-          <animeList :animeList="upcoming?.data" />
+          <animeList :animeList="upcoming?.data" @refresh-data="refresh1" />
         </div>
       </div>
     </div>

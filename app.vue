@@ -1,16 +1,16 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <NavBar />
+  <NuxtPage />
 </template>
 
 <style>
-.layout-enter-active,
-.layout-leave-active {
-  transition: all 0.9s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
 }
-.layout-enter-from,
-.layout-leave-to {
-  filter: grayscale(1);
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
 </style>

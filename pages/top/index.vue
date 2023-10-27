@@ -2,11 +2,6 @@
 import { IconBadgeFilled } from "@tabler/icons-vue";
 import { IconStarFilled } from "@tabler/icons-vue";
 
-//meta title
-useHead({
-  title: "Anime Weebs App",
-});
-
 const route = useRoute();
 //init config
 const config = useRuntimeConfig();
@@ -29,13 +24,15 @@ function truncateText(text: string, maxLength: number) {
 }
 
 //fetch data from API with "useAsyncData"
-const { pending, data: animes }: any = await useFetch(url, {
-  lazy: true,
-});
+const { pending, data: animes }: any = await useLazyFetch(url);
 </script>
 
 <template>
   <div>
+    <Head>
+      <Title>TOP Anime | Anime Weebs App</Title>
+      <Meta name="description" content="Top Anime" />
+    </Head>
     <div class="py-32 bg-primary_white">
       <div class="container">
         <!-- Highlight -->
