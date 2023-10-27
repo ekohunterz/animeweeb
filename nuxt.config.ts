@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@vueuse/nuxt", "nuxt-swiper", "dayjs-nuxt", "@vueuse/nuxt", "@nuxt/image"],
+  modules: ["@vueuse/nuxt", "nuxt-swiper", "dayjs-nuxt", "@vueuse/nuxt", "@nuxt/image", "@vite-pwa/nuxt"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -61,5 +61,50 @@ export default defineNuxtConfig({
     prefix: "Swiper",
     styleLang: "css",
     modules: ["navigation", "pagination", "autoplay", "effect-creative"], // all modules are imported by default
+  },
+  pwa: {
+    manifest: {
+      name: "Anime Weebs App",
+      short_name: "Wibu App",
+      description: "Infomarsi Seputar Anime",
+      icons: [
+        {
+          src: "/icon/android-launchericon-72-72.png",
+          sizes: "72x72",
+          type: "image/png",
+        },
+        {
+          src: "/icon/android-launchericon-144-144.png",
+          sizes: "144x144",
+          type: "image/png",
+        },
+        {
+          src: "/icon/android-launchericon-192-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/icon/android-launchericon-256-256.png",
+          sizes: "256x256",
+          type: "image/png",
+        },
+        {
+          src: "/icon/android-launchericon-512-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/",
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 20,
+    },
+    devOptions: {
+      enabled: true,
+      type: "module",
+    },
   },
 });

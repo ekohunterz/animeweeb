@@ -1,6 +1,7 @@
 <template>
   <NavBar />
   <NuxtPage />
+  <VitePwaManifest />
 </template>
 
 <style>
