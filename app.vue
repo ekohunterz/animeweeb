@@ -2,6 +2,7 @@
   <NavBar />
   <NuxtPage />
   <VitePwaManifest />
+  <PopupPWA />
 </template>
 
 <style>

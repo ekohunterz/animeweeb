@@ -67,6 +67,9 @@ export default defineNuxtConfig({
       name: "Anime Weebs App",
       short_name: "Wibu App",
       description: "Infomarsi Seputar Anime",
+      display: "standalone",
+      scope: "/",
+      start_url: "/",
       icons: [
         {
           src: "/icon/android-launchericon-72-72.png",
@@ -84,11 +87,6 @@ export default defineNuxtConfig({
           type: "image/png",
         },
         {
-          src: "/icon/android-launchericon-256-256.png",
-          sizes: "256x256",
-          type: "image/png",
-        },
-        {
           src: "/icon/android-launchericon-512-512.png",
           sizes: "512x512",
           type: "image/png",
@@ -96,7 +94,9 @@ export default defineNuxtConfig({
       ],
     },
     workbox: {
-      navigateFallback: "/",
+      navigateFallback: null,
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      cleanupOutdatedCaches: false,
     },
     client: {
       installPrompt: true,
